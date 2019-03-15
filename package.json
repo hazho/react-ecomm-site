@@ -23,9 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start:docs": "styleguidist server",
-    "build:docs": "styleguidist build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,7 +36,6 @@
   ],
   "devDependencies": {
     "@types/jest": "^24.0.11",
-    "react-styleguidist": "^9.0.4",
     "react-testing-library": "^6.0.0"
   }
 }
