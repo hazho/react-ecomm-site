@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Field } from '../../../components/field';
 import { Spinner } from '../../../components/spinner';
 import { attemptLogin, attemptLogout } from '../auth.actions';
 import { AuthStatus } from '../auth.constants';
@@ -33,7 +32,7 @@ function LoginFormContent({ status, error, login, logout }) {
       <legend>Login</legend>
       {isSubmitting && <Spinner />}
       {error && <div className="alert alert-danger">{error}</div>}
-      <Field>
+      <div className="form-group">
         <label htmlFor="login-email">Email</label>
         <input
           className="form-control"
@@ -44,7 +43,7 @@ function LoginFormContent({ status, error, login, logout }) {
           required
           disabled={isSubmitting}
         />
-      </Field>
+      </div>
       <button className="btn btn-primary" type="submit" disabled={isSubmitting}>
         Login
       </button>

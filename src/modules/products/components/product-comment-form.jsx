@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Textarea from 'react-textarea-autosize';
-import { Field } from '../../../components/field';
 import { Spinner } from '../../../components/spinner';
 import { selectUser } from '../../auth/auth.selectors';
 import { submitAddProductComment } from '../product.actions';
@@ -29,7 +28,7 @@ function ProductCommentFormContent({ productId, submitForm, user }) {
   return (
     <form onSubmit={handleSubmit}>
       <legend>Add Your Review</legend>
-      <Field>
+      <div className="form-group">
         <label>Your Name</label>
         <input
           value={userName}
@@ -38,8 +37,8 @@ function ProductCommentFormContent({ productId, submitForm, user }) {
           required
           className="form-control"
         />
-      </Field>
-      <Field>
+      </div>
+      <div className="form-group">
         <label>Your Review</label>
         <Textarea
           id="product-comment-form-content"
@@ -50,7 +49,7 @@ function ProductCommentFormContent({ productId, submitForm, user }) {
           required
           className="form-control"
         />
-      </Field>
+      </div>
       <div>
         {submitting ? (
           <Spinner />
