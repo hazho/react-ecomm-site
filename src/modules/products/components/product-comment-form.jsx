@@ -1,12 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button } from '../../../components/button';
+import Textarea from 'react-textarea-autosize';
 import { Field } from '../../../components/field';
-import { Form } from '../../../components/form';
-import { Label } from '../../../components/label';
 import { Spinner } from '../../../components/spinner';
-import { TextField } from '../../../components/text-field';
-import { Textarea } from '../../../components/textarea';
 import { selectUser } from '../../auth/auth.selectors';
 import { submitAddProductComment } from '../product.actions';
 
@@ -31,35 +27,40 @@ function ProductCommentFormContent({ productId, submitForm, user }) {
   }
 
   return (
-    <Form title="Add Your Review" onSubmit={handleSubmit}>
-      <TextField
-        label="Your Name"
-        value={userName}
-        onChangeValue={setUserName}
-        disabled={submitting}
-        required
-      />
+    <form onSubmit={handleSubmit}>
+      <legend>Add Your Review</legend>
       <Field>
-        <Label>Your Review</Label>
+        <label>Your Name</label>
+        <input
+          value={userName}
+          onChange={ev => setUserName(ev.target.value)}
+          disabled={submitting}
+          required
+          className="form-control"
+        />
+      </Field>
+      <Field>
+        <label>Your Review</label>
         <Textarea
           id="product-comment-form-content"
           value={content}
-          onChangeValue={setContent}
+          onChange={ev => setContent(ev.target.value)}
           minRows={3}
           disabled={submitting}
           required
+          className="form-control"
         />
       </Field>
       <div>
         {submitting ? (
           <Spinner />
         ) : (
-          <Button color="primary" type="submit">
+          <button className="btn btn-primary" type="submit">
             Add
-          </Button>
+          </button>
         )}
       </div>
-    </Form>
+    </form>
   );
 }
 
