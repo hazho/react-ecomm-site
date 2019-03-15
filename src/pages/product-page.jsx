@@ -44,9 +44,9 @@ function ProductPageContent({ productId, details, loadDetails, addToCart }) {
                 <blockquote>{details.descriptions.join(', ')}</blockquote>
               )}
               <div>
-                <button onClick={addToCart} className="btn btn-success btn-lg">
+                <div onClick={addToCart} className="btn btn-success btn-lg">
                   Add To Cart
-                </button>
+                </div>
               </div>
             </div>
           </div>
