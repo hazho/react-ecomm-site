@@ -6,7 +6,7 @@ import './image.css';
  * Image is a component that allows you to specify image with its standard format (jpg/png/gif)
  * and webp format. It will fallback to use the standard format if browser doesn't support webp.
  */
-export function Image({ src, webpSrc, alt, ...props }) {
+export function Image({ src, webpSrc, blurSrc, alt, ...props }) {
   return (
     <div className="image">
       <picture>
