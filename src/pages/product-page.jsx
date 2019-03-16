@@ -31,6 +31,7 @@ function ProductPageContent({ productId, details, loadDetails, addToCart }) {
                 <ProductImage
                   url={details.images.standard}
                   webpUrl={details.images.webp}
+                  blurUrl={details.images.blur}
                   alt={details.name}
                 />
               </div>
