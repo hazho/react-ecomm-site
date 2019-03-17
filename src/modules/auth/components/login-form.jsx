@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Button } from '../../../components/button';
+import { FormGroup } from '../../../components/form-group';
 import { Spinner } from '../../../components/spinner';
 import { attemptLogin, attemptLogout } from '../auth.actions';
 import { AuthStatus } from '../auth.constants';
@@ -13,9 +15,9 @@ function LoginFormContent({ status, error, login, logout }) {
       <div className="alert alert-success">
         You're already login!
         <div>
-          <button className="btn btn-danger" onClick={logout}>
+          <Button color="danger" onClick={logout}>
             Logout
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -32,7 +34,7 @@ function LoginFormContent({ status, error, login, logout }) {
       <legend>Login</legend>
       {isSubmitting && <Spinner />}
       {error && <div className="alert alert-danger">{error}</div>}
-      <div className="form-group">
+      <FormGroup validationStatus="error">
         <label htmlFor="login-email">Email</label>
         <input
           className="form-control"
@@ -43,10 +45,15 @@ function LoginFormContent({ status, error, login, logout }) {
           required
           disabled={isSubmitting}
         />
-      </div>
-      <button className="btn btn-primary" type="submit" disabled={isSubmitting}>
+      </FormGroup>
+      <Button
+        className="login-btn"
+        color="primary"
+        type="submit"
+        disabled={isSubmitting}
+      >
         Login
-      </button>
+      </Button>
     </form>
   );
 }

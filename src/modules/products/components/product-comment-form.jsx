@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Textarea from 'react-textarea-autosize';
+import { Button } from '../../../components/button';
+import { TextareaField } from '../../../components/textarea-field';
 import { Spinner } from '../../../components/spinner';
 import { selectUser } from '../../auth/auth.selectors';
 import { submitAddProductComment } from '../product.actions';
@@ -38,25 +39,20 @@ function ProductCommentFormContent({ productId, submitForm, user }) {
           className="form-control"
         />
       </div>
-      <div className="form-group">
-        <label>Your Review</label>
-        <Textarea
-          id="product-comment-form-content"
-          value={content}
-          onChange={ev => setContent(ev.target.value)}
-          minRows={3}
-          disabled={submitting}
-          required
-          className="form-control"
-        />
-      </div>
+      <TextareaField
+        label="Your Review"
+        value={content}
+        onChangeValue={setContent}
+        disabled={submitting}
+        required
+      />
       <div>
         {submitting ? (
           <Spinner />
         ) : (
-          <button className="btn btn-primary" type="submit">
+          <Button color="primary" type="submit">
             Add
-          </button>
+          </Button>
         )}
       </div>
     </form>

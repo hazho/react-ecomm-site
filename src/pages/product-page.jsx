@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Spinner } from '../components/spinner';
+import { Button } from '../components/button';
 import { addProductToCart } from '../modules/cart/cart.actions';
 import { ProductImage } from '../modules/products/components/product-image';
 import { loadProductDetail } from '../modules/products/product.actions';
@@ -45,9 +46,9 @@ function ProductPageContent({ productId, details, loadDetails, addToCart }) {
                 <blockquote>{details.descriptions.join(', ')}</blockquote>
               )}
               <div>
-                <div onClick={addToCart} className="btn btn-success btn-lg">
+                <Button onClick={addToCart} color="success" size="lg">
                   Add To Cart
-                </div>
+                </Button>
               </div>
             </div>
           </div>
