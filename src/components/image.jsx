@@ -1,18 +1,32 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import './image.css';
+import { Spinner } from './spinner';
 
 /**
  * Image is a component that allows you to specify image with its standard format (jpg/png/gif)
  * and webp format. It will fallback to use the standard format if browser doesn't support webp.
  */
 export function Image({ src, webpSrc, blurSrc, alt, ...props }) {
+  // [value, valueSetter] = React.useState(initialValue);
+  const [isLoading, setIsLoading] = React.useState(true);
+
   return (
     <div className="image">
-      <picture>
+      {isLoading && (
+        <div className="image-spinner-container">
+          <Spinner />
+        </div>
+      )}
+      <picture onLoad={() => setIsLoading(false)}>
         <source srcSet={webpSrc} type="image/webp" />
         <source srcSet={src} type="image/jpeg" />
-        <img alt={alt} src={src} {...props} />
+        <img
+          onLoad={() => setIsLoading(false)}
+          alt={alt}
+          src={src}
+          {...props}
+        />
       </picture>
     </div>
   );

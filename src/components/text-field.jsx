@@ -1,22 +1,13 @@
 import React from 'react';
 import { FormGroup } from './form-group';
 import { Input } from './input';
-import { getId } from '../lib/id';
+import { Label } from './label';
 
-export const TextField = ({
-  label,
-  id,
-  validationStatus,
-  ...textareaProps
-}) => {
-  const defaultId = React.useRef(getId());
-
-  const idVal = id || defaultId.current;
-
+export const TextField = ({ label, validationStatus, ...textareaProps }) => {
   return (
     <FormGroup validationStatus={validationStatus}>
-      {label && <label htmlFor={idVal}>{label}</label>}
-      <Input id={idVal} {...textareaProps} />
+      {label && <Label>{label}</Label>}
+      <Input {...textareaProps} />
     </FormGroup>
   );
 };
